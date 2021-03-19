@@ -44,11 +44,14 @@ init() {
 
 #  install-ansible
 
-#  echo "$PREFIX Installing modules"
-#  SWARMLET_MODULES=()
-#  for MODULE in $(ls "$SWARMLET_MODULES_ROOT"/core); do
-#    SWARMLET_MODULES+=("core/$MODULE")
-#  done
+  echo "$PREFIX Installing modules"
+  SWARMLET_MODULES=()
+  for MODULE in $(ls "$SWARMLET_MODULES_ROOT"/core); do
+    SWARMLET_MODULES+=("core/$MODULE")
+  done
+
+  echo "$ROOT_DOMAIN"
+  echo "$SWARMLET_MODULES"
 #
 #  # TODO: refactor this mess
 #  # INSTALL_MODULES must be in this format: (module1 module2), or "" to skip optional modules installation
