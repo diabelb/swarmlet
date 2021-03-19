@@ -22,7 +22,6 @@
   when: "'/etc/cloud/templates/hosts.debian.tmpl' is file"
 
 - name: install pip
-
   apt:
     pkg:
       - python3-pip
