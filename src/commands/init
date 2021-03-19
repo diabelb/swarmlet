@@ -66,7 +66,7 @@ init() {
     echo "$PREFIX Installing $MODULE"
     sudo swarmlet repo create "$(basename "$(echo "$MODULE" | sed -r "s/\"//g")")" #&>/dev/null
     echo "repo created"
-    git-local-push "$SWARMLET_MODULES_ROOT/$(echo "$MODULE" | sed -r "s/\"//g")" >/dev/null
+    sudo git-local-push "$SWARMLET_MODULES_ROOT/$(echo "$MODULE" | sed -r "s/\"//g")" >/dev/null
     echo "git-local-pushed"
   done
 }
