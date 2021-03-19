@@ -18,7 +18,7 @@ if [ -d "$REPO_DEST" ]; then
   echo "$PREFIX Pulling changes"
   pushd "$REPO_DEST" >/dev/null
   unset GIT_DIR
-  git pull --allow-unrelated-histories || exit 1
+  git pull || exit 1
   popd >/dev/null
 else
   echo "$PREFIX Cloning repository $REPO_NAME"
