@@ -49,6 +49,7 @@ init() {
 #    SWARMLET_MODULES+=("core/$MODULE")
 #  done
 
+echo "MODULES: ${INSTALL_OPTS[INSTALL_MODULES}"
   # TODO: refactor this mess
   # INSTALL_MODULES must be in this format: (module1 module2), or "" to skip optional modules installation
   for MODULE in $(echo ${INSTALL_MODULES[@]} | sed -r "s/\(|\)//g"); do
