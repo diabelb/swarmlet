@@ -52,7 +52,7 @@ init() {
   # TODO: refactor this mess
   # INSTALL_MODULES must be in this format: (module1 module2), or "" to skip optional modules installation
   for MODULE in $(echo "${INSTALL_MODULES[@]}" | sed -r "s/\(|\)//g"); do
-    SWARMLET_MODULES+=("recommends/$(basename "$MODULE")")
+    SWARMLET_MODULES+=("recommends/$(basename $MODULE)")
   done
 
   swarmlet stack deploy registry "$SWARMLET_MODULES_ROOT"/core
