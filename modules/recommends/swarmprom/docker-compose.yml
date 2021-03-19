@@ -90,7 +90,7 @@ services:
         - traefik.http.services.grafana.loadbalancer.server.port=3000
         - traefik.http.routers.grafana.rule=Host(`grafana.${DOMAIN}`) # ${TODO: DOMAIN cannot be read after reboot}
         - traefik.http.routers.grafana.entrypoints=http,https
-        - traefik.http.routers.grafana.service=api@internal
+        - traefik.http.routers.grafana.service=grafana
   alertmanager:
     image: stefanprodan/swarmprom-alertmanager:v0.14.0
     networks:
