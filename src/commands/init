@@ -58,7 +58,7 @@ init() {
   swarmlet stack deploy registry "$SWARMLET_MODULES_ROOT"/core
   swarmlet stack build deployer "$SWARMLET_MODULES_ROOT"/core
   swarmlet stack deploy deployer "$SWARMLET_MODULES_ROOT"/core
-  swarmlet stack router deployer "$SWARMLET_MODULES_ROOT"/core
+  swarmlet stack deploy router "$SWARMLET_MODULES_ROOT"/core
 
   echo "$PREFIX Installing deployer: done"
 
