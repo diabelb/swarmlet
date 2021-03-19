@@ -61,6 +61,7 @@ init() {
   swarmlet stack build deployer "$SWARMLET_MODULES_ROOT"/core
   swarmlet stack deploy deployer "$SWARMLET_MODULES_ROOT"/core
 
+  echo "$SWARMLET_MODULES"
   for MODULE in ${SWARMLET_MODULES[@]}; do
     echo "$PREFIX Installing $MODULE"
     swarmlet repo create "$(basename "$(echo "$MODULE" | sed -r "s/\"//g")")" &>/dev/null
