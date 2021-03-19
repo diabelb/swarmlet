@@ -33,6 +33,7 @@ init() {
     done
 
     for KEY in "${!INSTALL_OPTS[@]}"; do
+      echo "$KEY=${INSTALL_OPTS[$KEY]}"
       export "$KEY=${INSTALL_OPTS[$KEY]}"
     done
 
@@ -41,29 +42,29 @@ init() {
     echo "$PREFIX Starting noninteractive installation"
   fi
 
-  install-ansible
+#  install-ansible
 
-  echo "$PREFIX Installing modules"
-  SWARMLET_MODULES=()
-  for MODULE in $(ls "$SWARMLET_MODULES_ROOT"/core); do
-    SWARMLET_MODULES+=("core/$MODULE")
-  done
-
-  # TODO: refactor this mess
-  # INSTALL_MODULES must be in this format: (module1 module2), or "" to skip optional modules installation
-  for MODULE in $(echo "${INSTALL_MODULES[@]}" | sed -r "s/\(|\)//g"); do
-    SWARMLET_MODULES+=("recommends/$(basename "$MODULE")")
-  done
-
-  swarmlet stack deploy registry "$SWARMLET_MODULES_ROOT"/core
-  swarmlet stack build deployer "$SWARMLET_MODULES_ROOT"/core
-  swarmlet stack deploy deployer "$SWARMLET_MODULES_ROOT"/core
-
-  for MODULE in ${SWARMLET_MODULES[@]}; do
-    echo "$PREFIX Installing $MODULE"
-    swarmlet repo create "$(basename "$(echo "$MODULE" | sed -r "s/\"//g")")" &>/dev/null
-    git-local-push "$SWARMLET_MODULES_ROOT/$(echo "$MODULE" | sed -r "s/\"//g")" >/dev/null
-  done
+#  echo "$PREFIX Installing modules"
+#  SWARMLET_MODULES=()
+#  for MODULE in $(ls "$SWARMLET_MODULES_ROOT"/core); do
+#    SWARMLET_MODULES+=("core/$MODULE")
+#  done
+#
+#  # TODO: refactor this mess
+#  # INSTALL_MODULES must be in this format: (module1 module2), or "" to skip optional modules installation
+#  for MODULE in $(echo "${INSTALL_MODULES[@]}" | sed -r "s/\(|\)//g"); do
+#    SWARMLET_MODULES+=("recommends/$(basename "$MODULE")")
+#  done
+#
+#  swarmlet stack deploy registry "$SWARMLET_MODULES_ROOT"/core
+#  swarmlet stack build deployer "$SWARMLET_MODULES_ROOT"/core
+#  swarmlet stack deploy deployer "$SWARMLET_MODULES_ROOT"/core
+#
+#  for MODULE in ${SWARMLET_MODULES[@]}; do
+#    echo "$PREFIX Installing $MODULE"
+#    swarmlet repo create "$(basename "$(echo "$MODULE" | sed -r "s/\"//g")")" &>/dev/null
+#    git-local-push "$SWARMLET_MODULES_ROOT/$(echo "$MODULE" | sed -r "s/\"//g")" >/dev/null
+#  done
 }
 
 "$@"
