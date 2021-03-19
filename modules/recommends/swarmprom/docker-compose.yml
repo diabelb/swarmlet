@@ -87,10 +87,10 @@ services:
           memory: 128M
       labels:
         - traefik.enable=true
-        - traefik.http.services.grafana-api.loadbalancer.server.port=3000
-        - traefik.http.routers.grafana-api.rule=Host(`grafana.${DOMAIN}`) # ${TODO: DOMAIN cannot be read after reboot}
-        - traefik.http.routers.grafana-api.entrypoints=http,https
-        - traefik.http.routers.grafana-api.service=api@internal
+        - traefik.http.services.grafana.loadbalancer.server.port=3000
+        - traefik.http.routers.grafana.rule=Host(`grafana.${DOMAIN}`) # ${TODO: DOMAIN cannot be read after reboot}
+        - traefik.http.routers.grafana.entrypoints=http,https
+        - traefik.http.routers.grafana.service=api@internal
   alertmanager:
     image: stefanprodan/swarmprom-alertmanager:v0.14.0
     networks:
