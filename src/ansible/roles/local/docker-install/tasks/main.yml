@@ -55,6 +55,9 @@
     group: '{{ docker_group }}'
     append: yes
 
+- name: Kill open ssh sessions
+  shell: "ps -ef | grep sshd | grep `whoami` | awk '{print \"kill -9\", $2}' | sh"
+
 - name: Install docker-compose
   command: pip3 install docker-compose
 
