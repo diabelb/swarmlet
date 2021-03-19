@@ -11,11 +11,9 @@ repo() {
 }
 
 repo-create() {
-  echo "creating repo"
   declare cmd="create"
   [[ "$1" == "$cmd" ]] && shift 1
 
-  echo "repo config"
   REPO_NAME="$1"
   REPO_PATH="$GIT_REPO_ROOT/$REPO_NAME.git"
 
